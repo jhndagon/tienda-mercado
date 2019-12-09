@@ -1,0 +1,10 @@
+<div class="form-group row">
+  <label for="exampleFormControlInput1" class="col-3">Ingrese la información a buscar: </label>
+  <div class="col-7">
+    <input type="email" class="form-control" id="exampleFormControlInput1" [(ngModel)]="searchInput">
+
+  </div>
+  <div class="col-2">
+      <button class="btn btn-primary" (click)="showInformation()"><i class="material-icons">search</i> <span>Buscar</span></button>
+  </div>
+</div>
