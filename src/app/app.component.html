@@ -6,12 +6,12 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <app-search></app-search>
+      <app-search (datos)="getArticules($event)"></app-search>
     </div>
   </div>
-  <div class="row">
-    <div class="col-3">
-      <app-product-card></app-product-card>
+  <div class="row" *ngIf="articles">
+    <div class="col-6" *ngFor="let article of articles">
+      <app-product-card [article]="article"></app-product-card>
     </div>
   </div>
 </div>

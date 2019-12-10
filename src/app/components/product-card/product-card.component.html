@@ -1,1 +1,19 @@
-<p>product-card works!</p>
+
+<div class="card mb-3 border border-dark">
+  <div class="row no-gutters">
+    <div class="col-4">
+      <img [src]="article.thumbnail" class="card-img img-thumbnail rounded" alt="">
+    </div>
+    <div class="col-8">
+      <div class="card-body">
+        <p class="card-title"><strong>{{ article.title }}</strong></p>
+        <p class="card-text">
+          Precio: {{article.price}}
+        </p>
+        <p class="card-text">
+          Vendedor: {{article.seller}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

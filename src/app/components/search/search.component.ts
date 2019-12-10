@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { MercadolibreService } from '../../services/mercadolibre.service';
+import { EventEmitter } from '@angular/core';
+import { Card } from '../../models/card';
 
 @Component({
   selector: 'app-search',
@@ -10,16 +12,29 @@ export class SearchComponent implements OnInit {
 
   public searchInput: string;
 
-  constructor(private mercadolibreService: MercadolibreService) {
+  public cards: Card[];
 
+  @Output() datos: EventEmitter<Card[]>;
+
+  constructor(private mercadolibreService: MercadolibreService) {
+    this.datos = new EventEmitter<Card[]>();
   }
 
   ngOnInit() {
   }
 
-  showInformation() {
+  getInformation() {
     if (this.searchInput) {
-      this.mercadolibreService.getInformation(this.searchInput)
+      this.cards = new Array();
+      this.mercadolibreService.getInformation(this.searchInput).subscribe(
+        data => {
+          data.map(dato => {
+            this.mercadolibreService.getNicknameByUserId(dato.seller).subscribe( seller => dato.seller = seller.nickname);
+          });
+          this.cards = data;
+          this.datos.emit(data);
+      }
+      );
     }
   }
 
