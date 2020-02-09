@@ -11,27 +11,36 @@ export class MercadolibreService {
 
   private url = 'https://api.mercadolibre.com';
 
-  constructor( private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   getQuery(query: string) {
-    return this.httpClient.get(`${ this.url + query}`);
+    return this.httpClient.get(`${this.url + query}`);
   }
 
   getInformation(search: string) {
     // `${ this.url }/sites/MCO/search?q=${ search }`)
-    return this.getQuery(`/sites/MCO/search?q=${ search }`).pipe( map(
+    const list = {
+      articles: null,
+      paging: null,
+      query: null
+    };
+    return this.getQuery(`/sites/MCO/search?q=${search}`).pipe(map(
 
-      (data: any) => data.results.map(dato => {
-        this.getNicknameByUserId(dato.seller.id);
-        // console.log(nickname);
-        return new Card(dato.thumbnail, dato.title, dato.price, dato.seller.id);
-      })
-    ) );
+      (data: any) => {
+        list.query = data.query;
+        list.paging = data.paging;
+        list.articles = data.results.map(dato => {
+          this.getNicknameByUserId(dato.seller.id);
+          return new Card(dato.thumbnail, dato.title, dato.price, dato.seller.id);
+        });
+        return list;
+      }
+    ));
   }
 
   getNicknameByUserId(id: string) {
 
-    return this.getQuery(`/users/${id}`).pipe(map( (data: any) => data ));
+    return this.getQuery(`/users/${id}`).pipe(map((data: any) => data));
   }
 
 }

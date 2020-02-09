@@ -4,7 +4,7 @@ export class Card {
   public price: number;
   public seller: string;
 
-  constructor(thumbnail: string, title: string, price: number, seller: string){
+  constructor(thumbnail: string, title: string, price: number, seller: string) {
     this.price = price;
     this.title = title;
     this.thumbnail = thumbnail;

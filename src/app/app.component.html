@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="jumbotron col-12 text-center">
-      <h1 class="display-5">Bienvenido a la tienda virtual de John David</h1>
+    <div class="bg-light col-12 text-center border border-bottom rounded-bottom mb-1">
+      <h1 class="display-5">Mercado John</h1>
     </div>
   </div>
   <div class="row">
@@ -10,8 +10,13 @@
     </div>
   </div>
   <div class="row" *ngIf="articles">
-    <div class="col-6" *ngFor="let article of articles">
+    <div class="col-sm-6 col-md-4" *ngFor="let article of articles | paginate: config">
       <app-product-card [article]="article"></app-product-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <app-pagination (datos)="getArticules($event)" [query]="query"></app-pagination>
     </div>
   </div>
 </div>

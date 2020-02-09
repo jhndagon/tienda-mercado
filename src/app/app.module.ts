@@ -7,15 +7,19 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     HttpClientModule,
     FormsModule
   ],

@@ -1,19 +1,25 @@
-
-<div class="card mb-3 border border-dark">
+<div class="card mb-1 border border-dark shadow p-3 mb-5 bg-white rounded">
   <div class="row no-gutters">
     <div class="col-4">
-      <img [src]="article.thumbnail" class="card-img img-thumbnail rounded" alt="">
+      <img [src]="article.thumbnail" class="card-img img-thumbnail rounded shadow bg-light" alt="">
     </div>
     <div class="col-8">
       <div class="card-body">
-        <p class="card-title"><strong>{{ article.title }}</strong></p>
+        <p class="card-title"><strong>{{ article.title | slice:0:seeMoreTitle }}</strong>
+          <span (click)="expandText(1)"><i class="material-icons">
+              {{ iconTitle }}
+            </i></span>
+        </p>
         <p class="card-text">
           Precio: {{article.price}}
         </p>
-        <p class="card-text">
-          Vendedor: {{article.seller}}
-        </p>
       </div>
     </div>
+    <p class="card-text">
+      Vendedor: {{article.seller | titlecase | slice:0:seeMoreSeller}}
+      <span (click)="expandText(2)"><i class="material-icons">
+          {{ iconSeller }}
+        </i></span>
+    </p>
   </div>
 </div>

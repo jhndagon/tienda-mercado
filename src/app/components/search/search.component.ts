@@ -12,12 +12,10 @@ export class SearchComponent implements OnInit {
 
   public searchInput: string;
 
-  public cards: Card[];
-
-  @Output() datos: EventEmitter<Card[]>;
+  @Output() datos: EventEmitter<any>;
 
   constructor(private mercadolibreService: MercadolibreService) {
-    this.datos = new EventEmitter<Card[]>();
+    this.datos = new EventEmitter<any>();
   }
 
   ngOnInit() {
@@ -25,13 +23,11 @@ export class SearchComponent implements OnInit {
 
   getInformation() {
     if (this.searchInput) {
-      this.cards = new Array();
       this.mercadolibreService.getInformation(this.searchInput).subscribe(
         data => {
-          data.map(dato => {
+          data.articles.map(dato => {
             this.mercadolibreService.getNicknameByUserId(dato.seller).subscribe( seller => dato.seller = seller.nickname);
           });
-          this.cards = data;
           this.datos.emit(data);
       }
       );
