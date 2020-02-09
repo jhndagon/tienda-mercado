@@ -21,7 +21,6 @@ export class ProductCardComponent implements OnInit {
 
   expandText(data) {
     if (data === 1) {
-
       this.seeMoreTitle = this.seeMoreTitle ? undefined : 10;
       this.iconTitle = this.seeMoreTitle ? 'keyboard_arrow_down' : 'keyboard_arrow_up';
     } else {

@@ -3,6 +3,7 @@ export class Card {
   public title: string;
   public price: number;
   public seller: string;
+  public sellerName: string;
 
   constructor(thumbnail: string, title: string, price: number, seller: string) {
     this.price = price;

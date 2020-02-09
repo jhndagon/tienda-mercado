@@ -24,9 +24,9 @@ export class SearchComponent implements OnInit {
   getInformation() {
     if (this.searchInput) {
       this.mercadolibreService.getInformation(this.searchInput).subscribe(
-        data => {
+         data => {
           data.articles.map(dato => {
-            this.mercadolibreService.getNicknameByUserId(dato.seller).subscribe( seller => dato.seller = seller.nickname);
+           this.mercadolibreService.getNicknameByUserId(dato.seller).subscribe( seller => dato.sellerName = seller.nickname);
           });
           this.datos.emit(data);
       }

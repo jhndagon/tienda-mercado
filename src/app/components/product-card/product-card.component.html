@@ -16,7 +16,7 @@
       </div>
     </div>
     <p class="card-text">
-      Vendedor: {{article.seller | titlecase | slice:0:seeMoreSeller}}
+      Vendedor: {{article.sellerName | titlecase | slice:0:seeMoreSeller}}
       <span (click)="expandText(2)"><i class="material-icons">
           {{ iconSeller }}
         </i></span>
