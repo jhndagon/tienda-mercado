@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="row" *ngIf="articles">
-    <div class="col-sm-6 col-md-4" *ngFor="let article of articles | paginate: config">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let article of articles | paginate: config">
       <app-product-card [article]="article"></app-product-card>
     </div>
   </div>

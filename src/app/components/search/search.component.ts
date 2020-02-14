@@ -34,4 +34,10 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  onKeyPress(event: any) {
+    if (event.key === 'Enter') {
+      this.getInformation();
+    }
+  }
+
 }
